@@ -6,12 +6,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface UserRepository extends JpaRepository<Users, Long> {
 
-    @Query(value = "select * from user where email = :username", nativeQuery = true)
-    public Users findUserByUsername(@Param("username") String username);
+    @Query(value = "select userid, username, password, email " +
+            "from users " +
+            "where username =:name", nativeQuery = true)
+    public Optional<Users> findUserByUsername(@Param("name") String username);
 
-    @Query(value = "select * from user where email = :emailadresse", nativeQuery = true)
-    public Users findUserByEmailAdresse(@Param("emailadresse") String email);
+    @Query(value = "select userid, username, password, email " +
+            "from users " +
+            "where email =:emailadresse", nativeQuery = true)
+    public Optional<Users> findUserByEmailAdresse(@Param("emailadresse") String email);
 }
