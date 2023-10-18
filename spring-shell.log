@@ -1,0 +1,6 @@
+1697615965840:sec -ls
+1697616088852:sec pull user -id 1
+1697616121578:sec pull user -i 1
+1697616248260:sec pull user -u pnkollo
+1697616337699:sec pull username -u pnkollo
+1697616449193:sec pull username -u enkollo

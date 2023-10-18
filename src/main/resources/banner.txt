@@ -1,0 +1,17 @@
+
+    ssssssssss       eeeeeeeeeeee        ccccccccccccccccuuuuuu    uuuuuu
+  ss::::::::::s    ee::::::::::::ee    cc:::::::::::::::cu::::u    u::::u
+ss:::::::::::::s  e::::::eeeee:::::ee c:::::::::::::::::cu::::u    u::::u
+s::::::ssss:::::se::::::e     e:::::ec:::::::cccccc:::::cu::::u    u::::u
+ s:::::s  ssssss e:::::::eeeee::::::ec::::::c     cccccccu::::u    u::::u
+   s::::::s      e:::::::::::::::::e c:::::c             u::::u    u::::u
+      s::::::s   e::::::eeeeeeeeeee  c:::::c             u::::u    u::::u
+ssssss   s:::::s e:::::::e           c::::::c     cccccccu:::::uuuu:::::u
+s:::::ssss::::::se::::::::e          c:::::::cccccc:::::cu:::::::::::::::uu
+s::::::::::::::s  e::::::::eeeeeeee   c:::::::::::::::::c u:::::::::::::::u
+ s:::::::::::ss    ee:::::::::::::e    cc:::::::::::::::c  uu::::::::uu:::u
+  sssssssssss        eeeeeeeeeeeeee      cccccccccccccccc    uuuuuuuu  uuuu
+
+
+${application.title} ${application.version}
+Powered by Spring Boot ${spring-boot.version} doh
