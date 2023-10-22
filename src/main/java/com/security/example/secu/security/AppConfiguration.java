@@ -1,3 +1,4 @@
+/*
 package com.security.example.secu.security;
 
 import com.security.example.secu.repositories.UserRepository;
@@ -49,3 +50,4 @@ public class AppConfiguration {
         return new BCryptPasswordEncoder();
     }
 }
+*/
