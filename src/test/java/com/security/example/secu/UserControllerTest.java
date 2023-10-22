@@ -3,6 +3,7 @@ package com.security.example.secu;
 import com.security.example.secu.controllers.UserController;
 import com.security.example.secu.entities.Users;
 import com.security.example.secu.services.UserService;
+import enums.Role;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,7 +28,7 @@ public class UserControllerTest {
     @Mock
     private UserService service;
 
-    private Users user = new Users(1L, "username", "password", "email");
+    private Users user = new Users(1L, "username", "password", "email" , Role.USER);
 
     @Test
     void test_getAllUserFromDB(){
