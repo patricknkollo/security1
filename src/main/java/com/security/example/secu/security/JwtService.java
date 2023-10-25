@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -64,7 +65,7 @@ public class JwtService {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails){
+    public String generateToken2(Map<String, Object> extraClaims, UserDetails userDetails){
         return Jwts.builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
@@ -72,6 +73,22 @@ public class JwtService {
                 .setExpiration(new Date(System.currentTimeMillis()+1000*30))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256)
                 .compact();
+    }
+
+    public String generateToken(Authentication authentication) {
+        String username = authentication.getName();
+        Date currentDate = new Date();
+        Date expireDate = new Date(currentDate.getTime() + 90000L);
+
+        String token = Jwts.builder()
+                .setSubject(username)
+                .setIssuedAt( new Date())
+                .setExpiration(expireDate)
+                .signWith(getSignKey(),SignatureAlgorithm.HS512)
+                .compact();
+        System.out.println("New token :");
+        System.out.println(token);
+        return token;
     }
 
     public boolean isTokenExpired(String token){

@@ -28,7 +28,7 @@ public class UserControllerTest {
     @Mock
     private UserService service;
 
-    private Users user = new Users(1L, "username", "password", "email" , Role.USER);
+    private Users user = new Users(1L, "username", "password", "email" , Role.USER.name());
 
     @Test
     void test_getAllUserFromDB(){

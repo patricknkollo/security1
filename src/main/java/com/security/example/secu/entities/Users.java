@@ -26,8 +26,10 @@ public class Users implements UserDetails {
     private String username;
     private String password;
     private String email;
-/*    @Enumerated(EnumType.STRING)
-    private Role role;*/
+   /* @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+    private List<String> role;
+*/
+    private String role;
 
   /*  @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
