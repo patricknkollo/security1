@@ -22,6 +22,8 @@ import java.util.function.Function;
 public class JwtService {
 
     private static final String SECRET_KEY = "5ba7599032960e07d3650f41cff9fb928061b21268e21667824511fa37e59ecb";
+
+    private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS512);
     public String extractUsername(String token){
         return extractClaim(token, Claims::getSubject);
     }
@@ -54,7 +56,7 @@ public class JwtService {
 
     private Claims extractAllClaims(String token){
         return Jwts.parserBuilder()
-                .setSigningKey(getSignKey())
+                .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
@@ -71,20 +73,20 @@ public class JwtService {
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis()+1000*30))
-                .signWith(getSignKey(), SignatureAlgorithm.HS256)
+                .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
     public String generateToken(Authentication authentication) {
         String username = authentication.getName();
         Date currentDate = new Date();
-        Date expireDate = new Date(currentDate.getTime() + 90000L);
+        Date expireDate = new Date(currentDate.getTime() + 1800000L);
 
         String token = Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt( new Date())
                 .setExpiration(expireDate)
-                .signWith(getSignKey(),SignatureAlgorithm.HS512)
+                .signWith(key,SignatureAlgorithm.HS512)
                 .compact();
         System.out.println("New token :");
         System.out.println(token);
